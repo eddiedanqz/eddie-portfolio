@@ -2,7 +2,7 @@
   
     <div class="container mt-3 flex justify-between items-center mx-auto px-8 md:px-12 lg:px-24 w-full">
         <div class="flex flex-wrap md:flex-nowrap">
-            <nav class="hidden fixed left-percentage md:inline-block lg:mr-24 lg:w-4 xl:block">
+            <!-- <nav class="hidden fixed left-percentage md:inline-block lg:mr-26 lg:w-4 xl:block">
                 <div class="absolute left-50 transform -translate-x-1/2 space-y-6 mt-36">
                     <a href="#" class="nav-dot selected-circle block w-6 h-6 rounded-full border-4 border-nav bg-body">
                         <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0 z-50">Home</span>
@@ -17,7 +17,7 @@
                         <span class="bg-black px-2 py-1 rounded-md ml-10 opacity-0">Hire</span>
                     </a>
                 </div>
-            </nav>
+            </nav> -->
 
             <div class="flex flex-wrap lg:mx-20 justify-center md:justify-center max-w-xl mt-0 md:max-w-md md:my-32">
                 <h1 class="font-bold text-5xl md:text-4xl lg:text-6xl text-center md:text-left">Building <br> beautiful web experiences.</h1>

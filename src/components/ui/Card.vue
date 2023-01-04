@@ -1,36 +1,48 @@
-<script>
-export default {
-  data() {
-    return {
-      post: {
-        name: '',
-        desc: '',
-        link:'',
-        git:''
-      }
-    }
-  }
-}
-
-</script>
 <template>
-					<div class="bg-white rounded-md mb-3 w-11/12">
-						<div class="relative h-36 lg:h-52">
-							<img src="https://images.unsplash.com/photo-1576153192396-180ecef2a715?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" 
-							class="w-full bg-nav h-full object-cover rounded-t-md">
+					<div class="rounded-md mb-3">
+						<div class="relative h-36 lg:h-60">
+							<img v-if="project.img" :src="imageUrlFor(project.img)" 
+							class="max-w-full bg-nav h-full object-center bg-center rounded-sm">
+							<div class="w-full h-full absolute inset-0 hover:bg-black hover:bg-opacity-40">
+								<p class="hidden hover:block text-white font-light text-sm">
+								{{project.description}}
+							</p>
+							</div>
 						</div>
 						<div class="m-1 p-2">
 							<div class="flex flex-row items-center justify-between">
-								<h6 class="text-gray-900 font-semibold my-2">Project Name</h6>
+								<h6 class="text-white font-semibold my-2">{{project.name}}</h6>
 								<div class="space-x-1">
-									<span class="text-gray-600">visit</span>
-									<span class="text-gray-600 text-sm">/</span><span class="text-gray-600">site</span>
+									<span class="text-white cursor-pointer" @click="gotoPage(project.link)">
+										<i class="fas fa-globe"></i>
+									</span>
+									<span class="text-white text-sm">/</span>
+									<span class="text-white cursor-pointer" @click="gotoPage(project.git)">
+										<i class="fab fa-github"></i>
+									</span>
 								</div>
 							</div>
-							<p class="text-gray-700 font-light text-sm">
-								I’ve had the pleasure of working with multiple Fortune 500 companies, 
-								designing and implementing both frontend and backend.
-							</p>
 						</div>
 					</div>
 </template>
+<script>
+import sanity from '../../client'
+import imageUrlBuilder from '@sanity/image-url'
+
+const imageBuilder = imageUrlBuilder(sanity);
+
+export default {
+	name:'Card',
+ props:['project'],
+ methods:{
+	imageUrlFor(source){
+		return imageBuilder.image(source)
+	},
+	 gotoPage(link) {
+      let route = link;
+      window.open(route);
+    },
+ }
+}
+
+</script>

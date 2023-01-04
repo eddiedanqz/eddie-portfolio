@@ -10,7 +10,9 @@
     "tail": "npx tailwindcss -i ./index.css -o ./tailwind.css -w"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.2",
     "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
     "vue": "^3.2.45",
     "vuex": "^4.0.2"
   },

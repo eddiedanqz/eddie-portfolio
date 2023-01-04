@@ -1,22 +1,42 @@
-<script setup>
-import Card from './ui/Card.vue'
-
-</script>
 <template>
   	<!-- My work -->
-		<div class="container mt-24 flex justify-center items-center mx-auto px-8 md:px-14 lg:px-28 w-full">
+		<div class="container mt-24 mx-auto px-8 md:px-14 lg:px-24 md:w-11/12">
 			<section class="w-full">
 				<h2 id="work" class="secondary-title">My work</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+				<div class="grid grid-cols-1 space-x-3 mt-6 md:grid-cols-2 lg:grid-cols-3">
 					<!--card 1-->
-				<Card/>
-					<!--card 4-->
-				<Card/>
-					<!--card 3-->
-				<Card/>
-	    </div>
+				<Card  v-for="project in projects" :key="project.id" :project="project"/>
+	         </div>
 			</section>
 		</div>
-
-
 </template>
+
+<script>
+import Card from './ui/Card.vue'
+import sanity from '../client';
+
+export default {
+  name: "Work",
+   components: {
+    Card
+  },
+   data(){
+    return{
+      projects:[]
+    }
+  },
+  methods: {
+	fetchData(){
+ let QUERY = '*[_type == "project"]';
+    sanity.fetch(QUERY).then((projects) => {
+		this.projects = projects
+		// console.log(projects)
+	})
+	}
+  },
+   created() {
+    this.fetchData();
+  }
+};
+
+</script>
