@@ -1,79 +1,148 @@
-<script setup>
-
-</script>
+<script setup></script>
 <template>
-  	<!-- Clients -->
-		<div class="container mt-52 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-			<section class="w-full">
-				<h2 id="clients" class="secondary-title">Clients</h2>
-				<p class="section-paragraph">I’ve had the pleasure of working with multiple Fortune 500 companies, designing and implementing both frontend and backend.</p>
+  <!-- Clients -->
+  <div
+    class="container mt-20 mx-auto px-8 md:py-4 md:px-14 lg:px-24 md:w-11/12"
+  >
+    <section class="w-full">
+      <h2 id="clients" class="secondary-title">Clients</h2>
+      <p class="section-paragraph">
+        I’ve had the pleasure of working with multiple Fortune 500 companies,
+        designing and implementing both frontend and backend.
+      </p>
 
-				<!-- Clients -->
-				<div class="space-y-12 my-16">
-					<div class="w-full border border-nav p-16 lg:px-32 lg:py-20 lg:space-x-32 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap">
-						
-						<!-- Client logo -->
-						<div class="mb-6 lg:mb-0">
-							<svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M66.6983 92.1599C61.5487 97.2095 55.867 96.4223 50.4513 94.0415C44.6936 91.6127 39.4299 91.4591 33.3492 94.0415C25.7767 97.3439 21.7577 96.3839 17.1972 92.1599C-8.55106 65.3759 -4.75058 24.5759 24.5131 23.0399C31.6105 23.4239 36.5796 27.0047 40.7601 27.3023C46.9739 26.0255 52.9216 22.3679 59.5724 22.8479C67.5629 23.5007 73.5392 26.6879 77.5297 32.4191C61.0926 42.4031 64.9881 64.2911 80.0855 70.4351C77.0641 78.4511 73.1876 86.3711 66.6888 92.2271L66.6983 92.1599ZM40.19 22.7519C39.4204 10.8479 48.9691 1.05595 59.9525 0.0959473C61.4632 13.8239 47.6009 24.0959 40.19 22.7519Z" fill="white"/></svg>
-						</div>
+      <!-- Clients -->
+      <div class="relative my-10 h-64 overflow-hidden">
+        <div
+          v-for="(client, i) in clients"
+          :key="client.id"
+          :data-index="i"
+          class="w-full absolute inset-0 bg-body border border-nav p-16 lg:px-32 lg:py-14 lg:space-x-32 flex justify-center 
+		  lg:justify-start lg:items-center flex-wrap lg:flex-nowrap"
+        >
+          <!-- Client logo -->
+          <div class="mb-6 lg:mb-0">
+            <img
+              v-if="client.img"
+              :src="imageUrlFor(client.img)"
+              class="w-44 h-auto"
+            />
+          </div>
+          <!-- Client info -->
+          <div
+            class="flex flex-wrap justify-center text-center lg:text-left lg:block"
+          >
+            <h3 class="text-white text-3xl font-semibold">{{ client.name }}</h3>
+            <div
+              class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+            >
+              <div class="badge">UI/UX</div>
+              <div class="badge">Frontend development</div>
+            </div>
 
-						<!-- Client info -->
-						<div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-							<h3 class="text-white text-3xl font-semibold">Apple, inc.</h3>
-
-							<div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-								<div class="badge">UI/UX</div>
-								<div class="badge">Frontend development</div>
-							</div>
-
-							<p class="text-secondary">I’ve had the pleasure of working with multiple Fortune 500 companies, designing and implementing both frontend and backend.</p>
-						</div>
-
-					</div>
-					<div class="w-full border border-nav p-16 lg:px-32 lg:py-20 lg:space-x-32 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap">
-						
-						<!-- Client logo -->
-						<div class="mb-6 lg:mb-0">
-							<svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M66.6983 92.1599C61.5487 97.2095 55.867 96.4223 50.4513 94.0415C44.6936 91.6127 39.4299 91.4591 33.3492 94.0415C25.7767 97.3439 21.7577 96.3839 17.1972 92.1599C-8.55106 65.3759 -4.75058 24.5759 24.5131 23.0399C31.6105 23.4239 36.5796 27.0047 40.7601 27.3023C46.9739 26.0255 52.9216 22.3679 59.5724 22.8479C67.5629 23.5007 73.5392 26.6879 77.5297 32.4191C61.0926 42.4031 64.9881 64.2911 80.0855 70.4351C77.0641 78.4511 73.1876 86.3711 66.6888 92.2271L66.6983 92.1599ZM40.19 22.7519C39.4204 10.8479 48.9691 1.05595 59.9525 0.0959473C61.4632 13.8239 47.6009 24.0959 40.19 22.7519Z" fill="white"/></svg>
-						</div>
-
-						<!-- Client info -->
-						<div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-							<h3 class="text-white text-3xl font-semibold">Apple, inc.</h3>
-
-							<div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-								<div class="badge">UI/UX</div>
-								<div class="badge">Frontend development</div>
-							</div>
-
-							<p class="text-secondary">I’ve had the pleasure of working with multiple Fortune 500 companies, designing and implementing both frontend and backend.</p>
-						</div>
-
-					</div>
-					<div class="w-full border border-nav p-16 lg:px-32 lg:py-20 lg:space-x-32 flex justify-center lg:justify-start flex-wrap lg:flex-nowrap">
-						
-						<!-- Client logo -->
-						<div class="mb-6 lg:mb-0">
-							<svg width="80" height="96" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M66.6983 92.1599C61.5487 97.2095 55.867 96.4223 50.4513 94.0415C44.6936 91.6127 39.4299 91.4591 33.3492 94.0415C25.7767 97.3439 21.7577 96.3839 17.1972 92.1599C-8.55106 65.3759 -4.75058 24.5759 24.5131 23.0399C31.6105 23.4239 36.5796 27.0047 40.7601 27.3023C46.9739 26.0255 52.9216 22.3679 59.5724 22.8479C67.5629 23.5007 73.5392 26.6879 77.5297 32.4191C61.0926 42.4031 64.9881 64.2911 80.0855 70.4351C77.0641 78.4511 73.1876 86.3711 66.6888 92.2271L66.6983 92.1599ZM40.19 22.7519C39.4204 10.8479 48.9691 1.05595 59.9525 0.0959473C61.4632 13.8239 47.6009 24.0959 40.19 22.7519Z" fill="white"/></svg>
-						</div>
-
-						<!-- Client info -->
-						<div class="flex flex-wrap justify-center text-center lg:text-left lg:block">
-							<h3 class="text-white text-3xl font-semibold">Apple, inc.</h3>
-
-							<div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-								<div class="badge">UI/UX</div>
-								<div class="badge">Frontend development</div>
-							</div>
-
-							<p class="text-secondary">I’ve had the pleasure of working with multiple Fortune 500 companies, designing and implementing both frontend and backend.</p>
-						</div>
-
-					</div>
-				</div>
-
-			</section>
-		</div>
-
-
+            <p class="text-secondary">
+              I’ve had the pleasure of working with multiple Fortune 500
+              companies, designing and implementing both frontend and backend.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between space-x-5">
+        <button class="" @click="onPrevious()">Prev</button>
+        <button class="" @click="onNext()">Next</button>
+      </div>
+    </section>
+  </div>
 </template>
+<script>
+import { client, imageUrlFor } from "../client";
+
+export default {
+  name: "Client",
+  data() {
+    return {
+      clients: [],
+      currentSlideIndex: 0,
+    };
+  },
+  methods: {
+    imageUrlFor,
+    animate(element, animation, onAnimateEnd) {
+      const plainClasslList = Array.prototype.slice.call(element.classList);
+      const animationsToRemove = plainClasslList.filter((className) =>
+        className.includes("animate__")
+      );
+      element.classList.remove("hidden", ...animationsToRemove);
+      element.classList.add("animate__animated", animation);
+
+      if (onAnimateEnd) {
+        element.addEventListener("animationend", onAnimateEnd, { once: true });
+      }
+    },
+    getNextSlideIndex() {
+      if (this.currentSlideIndex + 1 < this.clients.length) {
+        return this.currentSlideIndex + 1;
+      }
+      return 0;
+    },
+    getPrevSlideIndex() {
+      if (this.currentSlideIndex > 0) {
+        return this.currentSlideIndex - 1;
+      }
+      return this.clients.length - 1;
+    },
+    onNext() {
+      const element = document.querySelector(
+        `[data-index="${this.currentSlideIndex}"]`
+      );
+      this.animate(element, "animate__fadeOutLeft", () =>
+        element.classList.add("hidden")
+      );
+
+      const nextSlideIndex = this.getNextSlideIndex();
+      const NextElement = document.querySelector(
+        `[data-index="${nextSlideIndex}"]`
+      );
+      this.animate(NextElement, "animate__fadeInRight");
+      this.currentSlideIndex = nextSlideIndex;
+    },
+    onPrevious() {
+      const element = document.querySelector(
+        `[data-index="${this.currentSlideIndex}"]`
+      );
+      this.animate(
+        element,
+        "animate__fadeOutRight",
+        element.classList.add("hidden")
+      );
+
+      const prevSlideIndex = this.getPrevSlideIndex();
+      const prevElement = document.querySelector(
+        `[data-index="${prevSlideIndex}"]`
+      );
+      this.animate(prevElement, "animate__fadeInLeft");
+      this.currentSlideIndex = prevSlideIndex;
+    },
+    fetchData() {
+      let QUERY = '*[_type == "client"]';
+      client
+        .fetch(QUERY)
+        .then((clients) => {
+          this.clients = clients;
+          // console.log(clients)
+        })
+        .then(() => {
+          this.clients.forEach((slide, i) => {
+            if (i !== this.currentSlideIndex) {
+              const element = document.querySelector(`[data-index="${i}"]`);
+              element.classList.add("hidden");
+            }
+          });
+        });
+    },
+  },
+  created() {
+    this.fetchData();
+  },
+};
+</script>

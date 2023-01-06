@@ -5,8 +5,8 @@
 				<h2 id="skills" class="secondary-title text-left">My Skills</h2>
 				<div class="grid grid-cols-1 mt-6 p-3  md:grid-cols-2 lg:grid-cols-5">
 					<!--card 1-->
-                <div class="bg-body h-40 w-40 shadow-2xl mx-1 my-3" v-for="skill in skills" :key="skill.id">
-                <div class="w-ull h-full flex flex-col items-center justify-center p-6 shadow-2xl">
+                <div class="bg-body h-40 w-40 shadow-xl mx-1 my-3" v-for="skill in skills" :key="skill.id">
+                <div class="w-ull h-full flex flex-col items-center justify-center p-6 shadow-xl">
                     <div class="m-2">
 				      <img v-if="skill.img" :src="imageUrlFor(skill.img)"  class="w-full h-full">
                     </div>
@@ -20,10 +20,7 @@
 </template>
 
 <script>
-import sanity from '../client';
-import imageUrlBuilder from '@sanity/image-url'
-
-const imageBuilder = imageUrlBuilder(sanity);
+import {client,imageUrlFor} from '../client';
 
 export default {
   name: "Skills",
@@ -33,16 +30,14 @@ export default {
     }
   },
   methods: {
+    imageUrlFor,
 	fetchData(){
  let QUERY = '*[_type == "skill"]';
-    sanity.fetch(QUERY).then((skills) => {
+    client.fetch(QUERY).then((skills) => {
 		this.skills = skills
 		// console.log(skills)
 	})
 	},
-    imageUrlFor(source){
-		return imageBuilder.image(source)
-	}
   },
    created() {
     this.fetchData();

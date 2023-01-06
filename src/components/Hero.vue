@@ -22,9 +22,10 @@
             <div class="flex flex-wrap lg:mx-20 justify-center md:justify-center max-w-xl mt-0 md:max-w-md md:my-32">
                 <h1 class="font-bold text-5xl md:text-4xl lg:text-6xl text-center md:text-left">Building <br> beautiful web experiences.</h1>
                 <div class="w-full flex justify-center md:justify-start">
-                    <button class="px-6 py-2.5 bg-theme text-white font-bold mt-10 flex items-center space-x-3 rounded-sm shadow-2xl">
+                    <a type="button" href="../../public/eddie-resume.pdf" class="px-6 py-2.5 bg-theme text-white font-bold mt-10 flex items-center space-x-3 rounded-sm shadow-2xl"
+                    download>
                         <span>Download CV.</span>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -38,6 +39,12 @@
 
 <script>
 export default {
-
+name:'Hero',
+methods:{
+    download (){
+         const url = '../assets/img/man.png';
+                window.location.href = url;
+    }
+}
 }
 </script>

@@ -12,8 +12,8 @@
 </template>
 
 <script>
+import {client} from '../client';
 import Card from './ui/Card.vue'
-import sanity from '../client';
 
 export default {
   name: "Work",
@@ -28,7 +28,7 @@ export default {
   methods: {
 	fetchData(){
  let QUERY = '*[_type == "project"]';
-    sanity.fetch(QUERY).then((projects) => {
+    client.fetch(QUERY).then((projects) => {
 		this.projects = projects
 		// console.log(projects)
 	})
