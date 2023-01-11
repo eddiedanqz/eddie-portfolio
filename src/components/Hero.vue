@@ -18,7 +18,7 @@
                     </a>
                 </div>
             </nav> -->
-
+      <div class="flex flex-col-reverse items-center md:flex-row">
             <div class="flex flex-wrap lg:mx-20 justify-center md:justify-center max-w-xl mt-0 md:max-w-md md:my-32">
                 <h1 class="font-bold text-5xl md:text-4xl lg:text-6xl text-center md:text-left">Building <br> beautiful web experiences.</h1>
                 <div class="w-full flex justify-center md:justify-start">
@@ -29,9 +29,10 @@
                 </div>
             </div>
 
-		<div class="mx-auto h-56 w-56 rounded-full mt-12 bg-center bg-cover border-2 border-white md:border-0 md:rounded-none md:w-full md:h-full md:-z-1">
-            <img src="../assets/img/man.png" alt="Man" class="w-full h-full rounded-full">
+		<div class="mx-auto h-56 w-56 rounded-full mt-12 mb-8 bg-center bg-cover border-8 border-white md:w-80 md:h-80 md:-z-1">
+            <img src="../assets/img/danqz11-half.jpg" alt="Man" class="w-full h-full rounded-full object-center">
 		</div>
+        </div>
         </div>
     </div>
 
