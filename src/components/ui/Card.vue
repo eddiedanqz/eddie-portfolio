@@ -3,10 +3,15 @@
 		<div class="relative h-36 lg:h-60">
 			<img v-if="project.img" :src="imageUrlFor(project.img)" 
 			class="max-w-full bg-nav h-full object-center bg-center rounded-sm" @mouseover="hover()" @mouseleave="hideHover()"/>
-			<div class="flex justify-center items-center w-full h-full absolute inset-0 bg-black bg-opacity-80" v-if="isVisible">
+			<div class="flex justify-end items-center w-full h-full absolute inset-0 bg-black bg-opacity-80" v-if="isVisible">
+				<div class="flex-row">
 				<p class="text-white font-light text-base p-2">
 				{{project.description}}
-			</p>
+			     </p>
+				<p class="text-white font-light text-base p-2">
+				<strong>Built with:</strong> {{project.skills}}
+			     </p>
+				</div>
 			</div>
 		</div>
 		<div class="m-1 p-2">

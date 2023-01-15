@@ -7,8 +7,7 @@
     <section class="w-full">
       <h2 id="clients" class="secondary-title">Clients</h2>
       <p class="section-paragraph">
-        I’ve had the pleasure of working with multiple Fortune 500 companies,
-        designing and implementing both frontend and backend.
+        I’ve had the pleasure of working with these companies.
       </p>
 
       <!-- Clients -->
@@ -36,20 +35,22 @@
             <div
               class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
             >
-              <div class="badge">UI/UX</div>
-              <div class="badge">Frontend development</div>
+              <div class="badge" v-for="(role,i) in client.roles" :key="i">{{ role }}</div>
             </div>
 
             <p class="text-secondary">
-              I’ve had the pleasure of working with multiple Fortune 500
-              companies, designing and implementing both frontend and backend.
             </p>
           </div>
         </div>
       </div>
-      <div class="flex justify-between space-x-5">
-        <button class="" @click="onPrevious()">Prev</button>
-        <button class="" @click="onNext()">Next</button>
+      <div class="flex justify-center space-x-5">
+        <button class="badge" @click="onPrevious()">
+          <i class="fas fa-chevron-left"></i>
+          </button>
+
+        <button class="badge" @click="onNext()"> 
+           <i class="fas fa-chevron-right"></i>
+         </button>
       </div>
     </section>
   </div>
@@ -129,7 +130,7 @@ export default {
         .fetch(QUERY)
         .then((clients) => {
           this.clients = clients;
-          // console.log(clients)
+          console.log(clients)
         })
         .then(() => {
           this.clients.forEach((slide, i) => {

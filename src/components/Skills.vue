@@ -10,7 +10,7 @@
                     <div class="m-2">
 				      <img v-if="skill.img" :src="imageUrlFor(skill.img)"  class="w-full h-full">
                     </div>
-                 <p class="text-sm font-semibold">{{ skill.name }}</p>
+                 <p class="text-xs font-semibold text-center">{{ skill.name }}</p>
                 </div>
                 </div>
 					<!--card 1-->
