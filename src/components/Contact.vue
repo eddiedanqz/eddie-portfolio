@@ -13,17 +13,22 @@ import Card from './ui/Card.vue'
 					  <form @submit.prevent="handleSubmit" class="space-y-6 col-span-2">
 						<div>
 							<label class="text-white block mb-3 text-lg font-bold">Name</label>
-							<input type="text" name="from_name" v-model="name" class="w-full border border-input-border bg-input px-4 py-2">
+							<input type="text" name="from_name" v-model="name" class="w-full border border-input-border bg-input px-4 py-2"
+							required>
 						</div>
 						<div>
 							<label class="text-white block mb-3 text-lg font-bold">Email</label>
-							<input type="email" name="from_email" v-model="email" class="w-full border border-input-border bg-input px-4 py-2">
+							<input type="email" name="from_email" v-model="email" class="w-full border border-input-border bg-input px-4 py-2"
+							required>
 						</div>
 						<div>
 							<label class="text-white block mb-3 text-lg font-bold">Message</label>
-							<textarea type="text" name="message" v-model="message" class="w-full border border-input-border bg-input px-4 py-2 h-40 resize-none"></textarea>
+							<textarea type="text" name="message" v-model="message" class="w-full border border-input-border bg-input px-4 py-2 h-40 resize-none"
+							required></textarea>
 						</div>
-						<button type="submit" class="px-6 py-2 bg-theme text-white font-bold rounded">Send it!</button>
+						<button type="submit" class="px-6 py-2 bg-theme text-white font-bold rounded">
+							{{ loading }}
+						</button>
 					  </form>
 
 					<div class="mt-12">
@@ -49,7 +54,6 @@ import Card from './ui/Card.vue'
 
 </template>
 <script>
-import { client} from "../client";
 import emailjs from 'emailjs-com';
 
 export default {
@@ -60,25 +64,28 @@ export default {
       email: '',
 	  message:'',
 	  IsFormSubmitted:false,
+	  loading:'Send it!'
     };
   },
   methods:{
 	handleSubmit(e){
- try {
+		this.loading = 'Sending...'
         emailjs.sendForm('service_efocumd', 'template_gr2jj6n', e.target,
         '-kxHB8Px8dOwFQHhV', {
           name: this.name,
           email: this.email,
           message: this.message
-        })
-
-      } catch(error) {
-          console.log({error})
-      }
-      // Reset form field
-      this.name = ''
-      this.email = ''
-      this.message = ''
+        }).then((res) => {
+			// Reset form field
+			this.name = ''
+			this.email = ''
+			this.message = ''
+			this.loading = 'Done!'
+		})
+      .catch((error) => {
+		this.loading ='Re send'
+		console.log({error})
+	  })
 	}
   }
 }
