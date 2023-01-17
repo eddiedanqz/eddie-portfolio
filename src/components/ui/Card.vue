@@ -18,11 +18,11 @@
 			<div class="flex flex-row items-center justify-between">
 				<h6 class="text-white font-semibold my-2">{{project.name}}</h6>
 				<div class="space-x-1">
-					<span class="text-white cursor-pointer" @click="gotoPage(project.link)">
+					<span class="text-white cursor-pointer text-sm" @click="gotoPage(project.link)">
 						<i class="fas fa-link"></i>
 					</span>
 					<span class="text-white text-sm">/</span>
-					<span class="text-white cursor-pointer" @click="gotoPage(project.git)">
+					<span class="text-white cursor-pointer text-sm" @click="gotoPage(project.git)">
 						<i class="fab fa-github"></i>
 					</span>
 				</div>

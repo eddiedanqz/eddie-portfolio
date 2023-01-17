@@ -47,11 +47,6 @@
 <script>
 export default {
 name:'Hero',
-methods:{
-    download (){
-         const url = '../assets/Eddie-Resume.pdf';
-                window.location.href = url;
-    }
-}
+
 }
 </script>
